@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IShootable
 {
-    void OnGetHit(Vector3 hitPoint);
+    void OnGetHit(RaycastHit _hit, int weaponDamage);
 }

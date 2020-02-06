@@ -45,8 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextWaypoint: {fileID: 0}
-  moveSpeed: 0
-  lookSmoothing: 0
+  enemiesAtThisWaypoint: []
+  moveSpeed: 0.1
+  lookSmoothing: 15
+  moveDelay: 1
 --- !u!20 &5474680881838296918
 Camera:
   m_ObjectHideFlags: 0
