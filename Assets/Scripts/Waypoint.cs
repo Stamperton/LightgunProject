@@ -57,4 +57,18 @@ public class Waypoint : MonoBehaviour
         return nextWaypoint;
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        if (nextWaypoint != null)
+            Gizmos.DrawLine(this.transform.position, nextWaypoint.transform.position);
+        Gizmos.DrawSphere(this.transform.position, 0.15f);
+
+        foreach (Enemy enemy in enemiesAtThisWaypoint)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(this.transform.position, enemy.transform.position);
+        }
+    }
+
 }
