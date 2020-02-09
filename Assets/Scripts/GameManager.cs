@@ -132,13 +132,27 @@ public class GameManager : MonoBehaviour
 
     void UpdateWaypoint()
     {
-
         currentWaypoint = currentWaypoint.SetNextWaypointInGameManager();
+
+        InitialiseEnemiesAtWaypoint(currentWaypoint);
 
         moveDelayTimer = 0f;
 
     }
 
+    public void InitialiseEnemiesAtWaypoint(Waypoint _waypoint)
+    {
+        foreach (Enemy enemy in currentWaypoint.enemiesAtThisWaypoint)
+        {
+            StartCoroutine(EnemySpawnDelay(enemy.spawnDelay, enemy));
+        }
+    }
 
+    IEnumerator EnemySpawnDelay(float timeDelay, Enemy enemy)
+    {
+        yield return new WaitForSeconds(timeDelay);
+
+        enemy.Spawn();
+    }
 
 }

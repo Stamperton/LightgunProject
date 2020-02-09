@@ -8,3 +8,11 @@
     RightArm,
     RightLeg
 }
+
+public enum EnemyState
+{
+    Idle,
+    Moving,
+    Attacking,
+    Dead
+}
