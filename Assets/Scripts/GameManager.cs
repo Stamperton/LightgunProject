@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     public AnimationCurve playerAnimationCurve;
     Animator playerAnimator;
 
+    public int playerHealth;
+
     public Waypoint startingWaypoint;
     public Waypoint currentWaypoint;
 

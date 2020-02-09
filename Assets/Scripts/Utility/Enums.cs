@@ -9,10 +9,27 @@
     RightLeg
 }
 
+public enum TargetHitLocation
+{
+    Edge,
+    Outer,
+    Middle,
+    Inner,
+    Center
+}
+
 public enum EnemyState
 {
     Idle,
     Moving,
     Attacking,
     Dead
+}
+
+public enum PlayerWeaponType
+{
+    Pistol,
+    MachineGun,
+    Shotgun,
+    Grenade
 }

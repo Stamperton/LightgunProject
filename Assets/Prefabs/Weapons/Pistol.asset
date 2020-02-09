@@ -13,10 +13,38 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   weaponName: Pistol
+  weapon_CurrentAmmo: 0
   weapon_ClipSize: 15
   damagePerBullet: 1
-  weaponAudio_Fire: []
-  weaponAudio_Reload: []
-  weaponAudio_DryFire: []
+  weaponAudio_Fire:
+  - {fileID: 8300000, guid: caaa99e9b372c954abba751666310c76, type: 3}
+  - {fileID: 8300000, guid: 090f4643c06a03b4ca9c363a2f78d847, type: 3}
+  - {fileID: 8300000, guid: 15f3f69c391692247b0d6e141a6f095c, type: 3}
+  - {fileID: 8300000, guid: 1f9f42e0e2388a4478c264c548292e1b, type: 3}
+  - {fileID: 8300000, guid: 266eac9bae62ac94593e9846e8d55d0a, type: 3}
+  weaponAudio_Reload:
+  - {fileID: 8300000, guid: ce7e972a5075d03439ddc06f75842eea, type: 3}
+  - {fileID: 8300000, guid: 925b0c452109045439ba016bf1dd5db6, type: 3}
+  - {fileID: 8300000, guid: 4263a708fdcf78c4ea959ee36f48ca77, type: 3}
+  - {fileID: 8300000, guid: 9741038afea2db64190d625a9a7e2f45, type: 3}
+  - {fileID: 8300000, guid: 70929d5ef58bc0b4a94a9ad2bc25c747, type: 3}
+  weaponAudio_DryFire:
+  - {fileID: 8300000, guid: 5e824669c9a4be24a9a114896d94ffc3, type: 3}
+  - {fileID: 8300000, guid: 2af04c7f2f482ae4ea0a03e2db9a8f9e, type: 3}
+  - {fileID: 8300000, guid: f6a300f68ed8a1843a4e2807a548a221, type: 3}
+  - {fileID: 8300000, guid: a60568e133cfce64ab38c9a299f68e98, type: 3}
+  - {fileID: 8300000, guid: e032515e686ce6e4f85c2b98bf269fd0, type: 3}
+  - {fileID: 8300000, guid: 8a4b21e7feb1f7a4bb5d88b5da7eb4ae, type: 3}
+  weaponAudio_Cock:
+  - {fileID: 8300000, guid: fb1bd797ba501ee468fc4739dacf29d0, type: 3}
+  - {fileID: 8300000, guid: ca511521e813cee438d0e7133bfe613b, type: 3}
+  - {fileID: 8300000, guid: 3639ea4a040f7d64eb4c7361bb0321ed, type: 3}
+  - {fileID: 8300000, guid: 7e507c17e9995d24db7cdf82a0914ff7, type: 3}
+  - {fileID: 8300000, guid: 48e1b2156a941a44b82ab8167f29b9b5, type: 3}
+  - {fileID: 8300000, guid: 92d1a53b4f9cdbe42b637d44ac264c10, type: 3}
+  - {fileID: 8300000, guid: 2384b353144f37b4694141163323d01e, type: 3}
   weaponIcon: {fileID: 0}
   weaponIcon_Ammo: {fileID: 0}
+  isReloadable: 1
+  isAutomatic: 0
+  timeBetweenShots: 0
