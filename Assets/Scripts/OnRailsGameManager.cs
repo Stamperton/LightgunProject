@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class OnRailsGameManager : MonoBehaviour
 {
     #region Singleton
-    public static GameManager instance;
+    public static OnRailsGameManager instance;
     void Awake()
     {
         if (instance == null)

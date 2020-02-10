@@ -11,11 +11,11 @@ public class Collectable : MonoBehaviour, IShootable
     {
         if (weaponToCollect != null)
         {
-            GameManager.instance.player.GetComponent<PlayerShooting>().AddToWeaponList(weaponToCollect);
+            OnRailsGameManager.instance.player.GetComponent<PlayerShooting>().AddToWeaponList(weaponToCollect);
         }
         else
         {
-            GameManager.instance.playerHealth++;
+            OnRailsGameManager.instance.playerHealth++;
         }
 
         GameObject.FindGameObjectWithTag("GameController").GetComponent<AudioSource>().PlayOneShot(collectionNoise);
