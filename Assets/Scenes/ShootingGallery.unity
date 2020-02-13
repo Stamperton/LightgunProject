@@ -4539,7 +4539,7 @@ MonoBehaviour:
   scoreText: {fileID: 1734797331}
   highScoreText: {fileID: 1302478778}
   timerText: {fileID: 1450346270}
-  gameLength: 5
+  gameLength: 60
   useRoundTargets: 1
   timeBetweenTargets: 0.25
   timeTargetsActive: 1.5
