@@ -31,5 +31,5 @@ public enum PlayerWeaponType
     Pistol,
     MachineGun,
     Shotgun,
-    Grenade
+    Flamethower
 }

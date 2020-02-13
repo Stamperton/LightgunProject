@@ -17,7 +17,15 @@ MonoBehaviour:
   weapon_CurrentAmmo: 30
   weapon_ClipSize: 30
   damagePerBullet: 1
-  weaponAudio_Fire: []
+  weaponAudio_Fire:
+  - {fileID: 8300000, guid: 898c1eee2e5505647a64d6dcc9f9133d, type: 3}
+  - {fileID: 8300000, guid: 26da85e12709da24493c3f8145617628, type: 3}
+  - {fileID: 8300000, guid: f78c9c0ece6424e45bb66b9e9ebb8965, type: 3}
+  - {fileID: 8300000, guid: d2041b4737047ac449c5fdaa6a5c8dea, type: 3}
+  - {fileID: 8300000, guid: 9b0b5910d8708c741b585ad1c0683716, type: 3}
+  - {fileID: 8300000, guid: b708faa29808ab3449051827f2174782, type: 3}
+  - {fileID: 8300000, guid: 6adc5f461d458b74f8c92a02cf7d0aa3, type: 3}
+  - {fileID: 8300000, guid: 40dcdbfa7cca04046873d58c7f6d0eab, type: 3}
   weaponAudio_Reload:
   - {fileID: 8300000, guid: 0a80464f702070a42941d9976c5ebde8, type: 3}
   - {fileID: 8300000, guid: bf939b95fcaebd843a407d6619a10a73, type: 3}

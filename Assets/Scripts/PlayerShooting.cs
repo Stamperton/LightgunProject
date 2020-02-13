@@ -11,6 +11,7 @@ public class PlayerShooting : MonoBehaviour
     PlayerUIManager UIManager;
 
     public GameObject hitParticles;
+    public GameObject flamethrowerParticles;
 
     [Header("Weapon Variables")]
     RaycastHit _hit;
@@ -111,8 +112,7 @@ public class PlayerShooting : MonoBehaviour
             Debug.DrawRay(cam.ScreenPointToRay(Input.mousePosition).origin, cam.ScreenPointToRay(Input.mousePosition).direction, Color.red);
             if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out _hit, 100))
             {
-                GameObject _particles = Instantiate(hitParticles, _hit.point, Quaternion.identity);
-                Destroy(_particles, 1f);
+                WeaponParticles(currentWeapon.weaponType);
 
                 //Shootable Target?
                 IShootable _targetShootable = _hit.collider.GetComponentInParent<IShootable>();
@@ -130,5 +130,20 @@ public class PlayerShooting : MonoBehaviour
         }
 
 
+    }
+
+    void WeaponParticles(PlayerWeaponType weaponType)
+    {
+        GameObject _particles;
+        if (weaponType != PlayerWeaponType.Flamethower)
+        {
+            _particles = Instantiate(hitParticles, _hit.point, Quaternion.identity);
+        }
+        else
+        {
+            _particles = Instantiate(flamethrowerParticles, cam.transform.position, Quaternion.LookRotation(_hit.transform.position));
+            //_particles.transform.LookAt(_hit.transform);
+        }
+        Destroy(_particles, 1f);
     }
 }

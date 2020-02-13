@@ -19,13 +19,18 @@ public class PlayerUIManager : MonoBehaviour
     }
     #endregion
 
-    public PlayerShooting player;
+    PlayerShooting player;
 
     //UI Variables
     //ADD WEAPON ICON public Sprite currentWeaponIcon;
     public Text playerClipText; //BULLETS LEFT
 
     //ADD HEALTH
+
+    private void Start()
+    {
+        player = GetComponentInParent<PlayerShooting>();
+    }
 
 
     public void UpdateUI()
