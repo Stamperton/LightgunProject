@@ -12,4 +12,12 @@ public class PlayerHitArea : MonoBehaviour
             other.GetComponentInParent<Enemy>().EnterMeleeAttackRange();
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            other.GetComponentInParent<Enemy>().LeaveMeleeAttackRange();
+        }
+    }
 }

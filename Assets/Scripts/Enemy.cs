@@ -59,6 +59,15 @@ public class Enemy : MonoBehaviour, IShootable
         AIHandler(enemyState);
     }
 
+    public virtual void LeaveMeleeAttackRange()
+    {
+        if (enemyState == EnemyState.Dead)
+            return;
+
+        enemyState = EnemyState.Moving;
+        AIHandler(enemyState);
+    }
+
     public virtual void Death()
     {
         enemyState = EnemyState.Dead;
@@ -132,6 +141,7 @@ public class Enemy : MonoBehaviour, IShootable
 
                 break;
             case EnemyState.Moving:
+                anim.SetBool("Attacking", false);
                 anim.SetBool("Moving", true);
                 break;
             case EnemyState.Attacking:
