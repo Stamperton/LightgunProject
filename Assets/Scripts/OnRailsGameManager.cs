@@ -132,6 +132,12 @@ public class OnRailsGameManager : MonoBehaviour
     }
 
 
+    void WaypointMove()
+    {
+
+    }
+
+
     void UpdateWaypoint()
     {
         currentWaypoint = currentWaypoint.SetNextWaypointInGameManager();

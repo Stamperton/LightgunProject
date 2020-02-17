@@ -19,6 +19,9 @@ public class PlayerShooting : MonoBehaviour
     public SO_Weapon currentWeapon;
     List<SO_Weapon> weaponList = new List<SO_Weapon>();
 
+    //Weapon List Variables
+    public int currentWeaponListPosition = 0;
+
     //Logic Variables
     bool isReloading = false;
     float shotDelayTimer;
@@ -33,6 +36,7 @@ public class PlayerShooting : MonoBehaviour
         cam = GetComponentInChildren<Camera>();
 
         //Setup
+        weaponList.Add(defaultWeapon);
         currentWeapon = defaultWeapon;
         currentWeapon.weapon_CurrentAmmo = currentWeapon.weapon_ClipSize;
         UIManager.UpdateUI();
@@ -60,6 +64,15 @@ public class PlayerShooting : MonoBehaviour
             CancelInvoke("Shoot");
             if (currentWeapon.weapon_CurrentAmmo != 0)
                 gunAudio.PlayOneShot(currentWeapon.weaponAudio_BulletTail); //Machinegun Bullet Tail (Echo Effect)
+        }
+
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f) // forward
+        {
+            CycleWeapons(-1);
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0f) // backwards
+        {
+            CycleWeapons(1);
         }
 
 
@@ -145,5 +158,22 @@ public class PlayerShooting : MonoBehaviour
             //_particles.transform.LookAt(_hit.transform);
         }
         Destroy(_particles, 1f);
+    }
+
+    void CycleWeapons(int cycle)
+    {
+        currentWeaponListPosition += cycle;
+        if (currentWeaponListPosition < 0)
+        {
+            currentWeaponListPosition = weaponList.Count -1;
+        }
+        if (currentWeaponListPosition > weaponList.Count -1)
+        {
+            currentWeaponListPosition = 0;
+        }
+
+        currentWeapon = weaponList[currentWeaponListPosition];
+
+        UIManager.UpdateUI();
     }
 }

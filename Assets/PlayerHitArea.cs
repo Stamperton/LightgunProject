@@ -9,7 +9,7 @@ public class PlayerHitArea : MonoBehaviour
         Debug.Log(other);
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponentInParent<Enemy>().EnterAttackRange();
+            other.GetComponentInParent<Enemy>().EnterMeleeAttackRange();
         }
     }
 }

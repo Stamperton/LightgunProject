@@ -1160,6 +1160,11 @@ PrefabInstance:
       propertyPath: spawnDelay
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4220074486349007188, guid: b8015a13f675c9f4da971970cd06f269,
+        type: 3}
+      propertyPath: spawnState
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7258292918880054374, guid: b8015a13f675c9f4da971970cd06f269,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3709,7 +3714,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypointSpawnedAt: {fileID: 0}
-  spawnDelay: 1
+  spawnDelay: 1.2
+  spawnState: 1
   shootableAreas:
   - hitLocation: 1
     collider: {fileID: 6104205461442618331}
@@ -3738,6 +3744,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waypointSpawnedAt: {fileID: 0}
   spawnDelay: 0
+  spawnState: 0
   shootableAreas:
   - hitLocation: 1
     collider: {fileID: 6104205461442618331}
@@ -4174,6 +4181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  lerpTime: 0.2
   targetPlayer: 1
 --- !u!4 &3754593646318920767 stripped
 Transform:
@@ -5626,6 +5634,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6935281012912262535}
   - component: {fileID: 7017289272009368201}
+  - component: {fileID: 6932617633561469648}
   m_Layer: 0
   m_Name: ENEMY_CyberGolem_Ranged
   m_TagString: Untagged
@@ -5633,6 +5642,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6932617633561469648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6932617633561469647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63acb801d05abe4bb0d49a222503be0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypointSpawnedAt: {fileID: 0}
+  spawnDelay: 0
+  spawnState: 0
+  shootableAreas: []
+  enemyHealth: 0
 --- !u!1 &6932621931677208681
 GameObject:
   m_ObjectHideFlags: 0
@@ -6168,7 +6194,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6932617633561469647}
-  m_LocalRotation: {x: -0, y: -0.9659258, z: -0, w: 0.25881922}
+  m_LocalRotation: {x: -0, y: -0.6087615, z: -0, w: 0.7933533}
   m_LocalPosition: {x: 9.82, y: 0, z: 8.8}
   m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_Children:
@@ -6180,7 +6206,7 @@ Transform:
   - {fileID: 6935411865510453703}
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: -150, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -75, z: 0}
 --- !u!4 &6935317821160753557
 Transform:
   m_ObjectHideFlags: 0

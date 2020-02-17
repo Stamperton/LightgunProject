@@ -5,6 +5,7 @@ using UnityEngine;
 public class LookAt : MonoBehaviour
 {
     public Transform target;
+    public float lerpTime;
     public bool targetPlayer = true;
 
     Transform startPosition;
@@ -20,9 +21,9 @@ public class LookAt : MonoBehaviour
 
     private void Update()
     {
-        Vector3 direction = target.position - transform.position;
-        Quaternion toRotation = Quaternion.LookRotation(transform.forward, direction);
-        transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 100 * Time.deltaTime);
+        Vector3 relativePos = target.position - transform.position;
+        Quaternion toRotation = Quaternion.LookRotation(relativePos);
+        transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, lerpTime * Time.deltaTime);
 
     }
 }

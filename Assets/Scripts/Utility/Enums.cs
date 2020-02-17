@@ -6,7 +6,8 @@
     LeftArm,
     LeftLeg,
     RightArm,
-    RightLeg
+    RightLeg,
+    Weapon
 }
 
 public enum TargetHitLocation

@@ -12,15 +12,16 @@ public class Enemy : MonoBehaviour, IShootable
     [Header("Setup Variables")]
     //SpawnTimer
     [Tooltip("Time in Seconds before the enemy moves from Idle to Moving animation state")]
-    public float spawnDelay; 
+    public float spawnDelay;
+    public EnemyState spawnState;
 
     //Collision Variables
     public ShootableArea[] shootableAreas;  //Public List of Colliders and HitLocation in Inspector
     Dictionary<Collider, HitLocation> _shootableAreas = new Dictionary<Collider, HitLocation>(); //Handling of the above
 
-    HitLocation lastLocationHit; //Determines Animation played and damage taken
+    protected HitLocation lastLocationHit; //Determines Animation played and damage taken
 
-    EnemyState enemyState; //AI State Machine State
+    protected EnemyState enemyState; //AI State Machine State
 
     [Header("Enemy Variables")]
     public int enemyHealth;
@@ -42,19 +43,19 @@ public class Enemy : MonoBehaviour, IShootable
 
     }
 
-    public void Spawn()
+    public virtual void Spawn()
     {
-        enemyState = EnemyState.Moving;
+        enemyState = spawnState;
         AIHandler(enemyState);
     }
 
-    public void EnterAttackRange()
+    public virtual void EnterMeleeAttackRange()
     {
         enemyState = EnemyState.Attacking;
         AIHandler(enemyState);
     }
 
-    public void Death()
+    public virtual void Death()
     {
         isDead = true; //Dead!
 
@@ -64,18 +65,24 @@ public class Enemy : MonoBehaviour, IShootable
         waypointSpawnedAt.enemiesAtThisWaypoint.Remove(this); //Remove from the Waypoint
     }
 
-    public void OnGetHit(RaycastHit hitPoint, int weaponDamage)
+    public virtual void OnGetHit(RaycastHit hitPoint, int weaponDamage)
     {
+        if (enemyState == EnemyState.Dead)
+            return;
+
         _shootableAreas.TryGetValue(hitPoint.collider, out lastLocationHit);
         Debug.Log(lastLocationHit);
 
         //Handle Animation
-        anim.SetTrigger("TakeDamage");
         // TODO : When Full Animations In - DamageAnimationHandler(lastLocationHit);
 
         //Handle Damage
         if (lastLocationHit == HitLocation.Head)
+        {
             enemyHealth -= (weaponDamage * 2);
+            anim.SetTrigger("HeadDamage");
+
+        }
         else
             enemyHealth -= weaponDamage;
 
@@ -108,7 +115,7 @@ public class Enemy : MonoBehaviour, IShootable
         }
     }
 
-    void AIHandler(EnemyState _state)
+    protected void AIHandler(EnemyState _state)
     {
         switch (_state)
         {
