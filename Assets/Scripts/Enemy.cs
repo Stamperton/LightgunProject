@@ -11,10 +11,12 @@ public class Enemy : MonoBehaviour, IShootable
 
     [Header("Setup Variables")]
     //SpawnTimer
-    [Tooltip("Time in Seconds before the enemy moves from Idle to Moving animation state")]
+    [Tooltip("Time in Seconds before the enemy moves from Idle to spawnState animation state")]
     public float spawnDelay;
     public EnemyState spawnState;
 
+    [Header("Damage Locations")]
+    public bool hasWeakPoint;
     //Collision Variables
     public ShootableArea[] shootableAreas;  //Public List of Colliders and HitLocation in Inspector
     Dictionary<Collider, HitLocation> _shootableAreas = new Dictionary<Collider, HitLocation>(); //Handling of the above
@@ -25,8 +27,7 @@ public class Enemy : MonoBehaviour, IShootable
 
     [Header("Enemy Variables")]
     public int enemyHealth;
-    //Are we Dead?
-    bool isDead = false;
+
 
     public void Start()
     {
@@ -51,14 +52,15 @@ public class Enemy : MonoBehaviour, IShootable
 
     public virtual void EnterMeleeAttackRange()
     {
+        if (enemyState == EnemyState.Dead)
+            return;
+
         enemyState = EnemyState.Attacking;
         AIHandler(enemyState);
     }
 
     public virtual void Death()
     {
-        isDead = true; //Dead!
-
         enemyState = EnemyState.Dead;
         AIHandler(enemyState);
 
@@ -74,13 +76,19 @@ public class Enemy : MonoBehaviour, IShootable
         Debug.Log(lastLocationHit);
 
         //Handle Animation
-        // TODO : When Full Animations In - DamageAnimationHandler(lastLocationHit);
+        DamageAnimationHandler(lastLocationHit);
 
         //Handle Damage
+
+        if (hasWeakPoint)
+        {
+            if (lastLocationHit != HitLocation.WeakPoint)
+                return;
+        }
+
         if (lastLocationHit == HitLocation.Head)
         {
             enemyHealth -= (weaponDamage * 2);
-            anim.SetTrigger("HeadDamage");
 
         }
         else
@@ -99,6 +107,7 @@ public class Enemy : MonoBehaviour, IShootable
             case HitLocation.Null:
                 break;
             case HitLocation.Head:
+                anim.SetTrigger("HeadDamage");
                 break;
             case HitLocation.Torso:
                 break;
