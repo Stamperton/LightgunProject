@@ -7,8 +7,15 @@ public class ExplosiveBarrel : MonoBehaviour, IShootable
     public float explosionRange;
     public int explosionDamage;
 
+    bool hit = false;
+
     public void OnGetHit(RaycastHit _hit, int weaponDamage)
     {
+        if (hit)
+            return;
+
+        hit = true;
+
         GetComponent<Animator>().SetBool("Dead", true);
 
 
