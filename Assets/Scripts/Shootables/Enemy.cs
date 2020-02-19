@@ -68,6 +68,12 @@ public class Enemy : MonoBehaviour, IShootable
         AIHandler(enemyState);
     }
 
+    public void EnterFire()
+    {
+        enemyHealth--;
+        DamageAnimationHandler(HitLocation.Head);
+    }
+
     public virtual void Death()
     {
         enemyState = EnemyState.Dead;
