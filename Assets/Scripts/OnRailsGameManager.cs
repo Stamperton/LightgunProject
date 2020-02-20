@@ -131,13 +131,6 @@ public class OnRailsGameManager : MonoBehaviour
         }
     }
 
-
-    void WaypointMove()
-    {
-
-    }
-
-
     void UpdateWaypoint()
     {
         currentWaypoint = currentWaypoint.SetNextWaypointInGameManager();
@@ -162,5 +155,4 @@ public class OnRailsGameManager : MonoBehaviour
 
         enemy.Spawn();
     }
-
 }

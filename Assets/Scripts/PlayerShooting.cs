@@ -10,6 +10,7 @@ public class PlayerShooting : MonoBehaviour
     Camera cam;
     PlayerUIManager UIManager;
 
+    public GameObject flashlightGO;
     public GameObject hitParticles;
     public GameObject flamethrowerParticles;
 
@@ -81,6 +82,12 @@ public class PlayerShooting : MonoBehaviour
         {
             StartCoroutine(Reload());
         }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            flashlightGO.SetActive(!flashlightGO.activeSelf);
+        }
+        
     }
 
     IEnumerator Reload()

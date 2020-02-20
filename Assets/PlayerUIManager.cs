@@ -19,6 +19,7 @@ public class PlayerUIManager : MonoBehaviour
     }
     #endregion
 
+    Animator anim;
     PlayerShooting player;
 
     //UI Variables
@@ -29,9 +30,14 @@ public class PlayerUIManager : MonoBehaviour
 
     private void Start()
     {
+        anim = GetComponent<Animator>();
         player = GetComponentInParent<PlayerShooting>();
     }
 
+    public void FadeToBlack()
+    {
+        anim.SetTrigger("FadeOut");
+    }
 
     public void UpdateUI()
     {

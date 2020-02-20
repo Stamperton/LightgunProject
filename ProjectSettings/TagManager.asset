@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Flame
+  - Flashlight
   layers:
   - Default
   - TransparentFX
