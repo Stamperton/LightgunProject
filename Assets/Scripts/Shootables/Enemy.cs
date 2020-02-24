@@ -79,8 +79,24 @@ public class Enemy : MonoBehaviour, IShootable
         enemyState = EnemyState.Dead;
         AIHandler(enemyState);
 
-        if (waypointSpawnedAt != null)
-            waypointSpawnedAt.enemiesAtThisWaypoint.Remove(this); //Remove from the Waypoint
+        waypointSpawnedAt.enemiesAtThisWaypoint?.Remove(this); //Remove from the Waypoint, if applicable
+    }
+
+    public void ExplosionHit(int damage)
+    {
+        enemyHealth -= damage;
+
+        if (hasWeakPoint)
+            lastLocationHit = HitLocation.WeakPoint;
+        else
+            lastLocationHit = HitLocation.Head;
+
+        DamageAnimationHandler(lastLocationHit);
+
+        if (enemyHealth <= 0)
+        {
+            Death();
+        }
     }
 
     public virtual void OnGetHit(RaycastHit hitPoint, int weaponDamage)
@@ -116,7 +132,7 @@ public class Enemy : MonoBehaviour, IShootable
         }
     }
 
-    void DamageAnimationHandler(HitLocation _hitLocation)
+    protected virtual void DamageAnimationHandler(HitLocation _hitLocation)
     {
         switch (_hitLocation)
         {
@@ -134,6 +150,10 @@ public class Enemy : MonoBehaviour, IShootable
             case HitLocation.RightArm:
                 break;
             case HitLocation.RightLeg:
+                break;
+            case HitLocation.Weapon:
+                break;
+            case HitLocation.WeakPoint:
                 break;
             default:
                 break;

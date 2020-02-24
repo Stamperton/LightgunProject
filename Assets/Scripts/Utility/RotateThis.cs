@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Rotates Objects
 public class RotateThis : MonoBehaviour
 {
     public float rotateSpeed;

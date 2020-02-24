@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
+
+//used for Rail Shooting hit locations
 public class ShootableArea
 {
     public HitLocation hitLocation;

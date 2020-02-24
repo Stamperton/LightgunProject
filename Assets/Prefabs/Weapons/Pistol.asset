@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4a4a89ddeb19164cbe746a3af82b25b, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
+  weaponType: 0
   weaponName: Pistol
-  weapon_CurrentAmmo: 0
+  weapon_CurrentAmmo: 14
   weapon_ClipSize: 15
   damagePerBullet: 1
+  weaponPhysicsForce: {x: 1, y: 10}
   weaponAudio_Fire:
   - {fileID: 8300000, guid: caaa99e9b372c954abba751666310c76, type: 3}
   - {fileID: 8300000, guid: 090f4643c06a03b4ca9c363a2f78d847, type: 3}
@@ -47,4 +49,5 @@ MonoBehaviour:
   weaponIcon_Ammo: {fileID: 0}
   isReloadable: 1
   isAutomatic: 0
+  weaponAudio_BulletTail: {fileID: 0}
   timeBetweenShots: 0

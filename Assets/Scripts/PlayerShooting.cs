@@ -87,20 +87,27 @@ public class PlayerShooting : MonoBehaviour
         {
             flashlightGO.SetActive(!flashlightGO.activeSelf);
         }
-        
+
     }
 
     IEnumerator Reload()
     {
+        //Prevent Multiple Reloads at once
         isReloading = true;
+
+        //Plays two seperate Audio Clips that are randomised - One for the magazine, one for the gun slide.
         AudioClip reloadAudio = currentWeapon.weaponAudio_Reload[Random.Range(0, currentWeapon.weaponAudio_Reload.Length)];
         gunAudio.PlayOneShot(reloadAudio);
         yield return new WaitForSeconds(reloadAudio.length);
         reloadAudio = currentWeapon.weaponAudio_Cock[Random.Range(0, currentWeapon.weaponAudio_Cock.Length)];
         gunAudio.PlayOneShot(reloadAudio);
         yield return new WaitForSeconds(reloadAudio.length);
+
+        //Reload appropriate amount of ammunition and update UI. This is the last thing done so the player cannot shoot mid-reload
         currentWeapon.weapon_CurrentAmmo = currentWeapon.weapon_ClipSize;
         UIManager.UpdateUI();
+
+        //Re-enables reloading.
         isReloading = false;
     }
 
@@ -128,8 +135,10 @@ public class PlayerShooting : MonoBehaviour
 
             UIManager.UpdateUI();
 
-            //Actually Shoot
+            //debug for testing
             Debug.DrawRay(cam.ScreenPointToRay(Input.mousePosition).origin, cam.ScreenPointToRay(Input.mousePosition).direction, Color.red);
+
+            //Actually Shoot
             if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out _hit, 100))
             {
                 WeaponParticles(currentWeapon.weaponType);
@@ -137,19 +146,15 @@ public class PlayerShooting : MonoBehaviour
                 //Shootable Target?
                 IShootable _targetShootable = _hit.collider.GetComponentInParent<IShootable>();
 
-                if (_targetShootable != null)
-                {
-                    _targetShootable.OnGetHit(_hit, currentWeapon.damagePerBullet);
-                }
-            }
+                _targetShootable?.OnGetHit(_hit, currentWeapon.damagePerBullet);
 
+
+            }
         }
         else
         {
             gunAudio.PlayOneShot(currentWeapon.weaponAudio_DryFire[Random.Range(0, currentWeapon.weaponAudio_DryFire.Length)]);
         }
-
-
     }
 
     void WeaponParticles(PlayerWeaponType weaponType)
@@ -172,9 +177,9 @@ public class PlayerShooting : MonoBehaviour
         currentWeaponListPosition += cycle;
         if (currentWeaponListPosition < 0)
         {
-            currentWeaponListPosition = weaponList.Count -1;
+            currentWeaponListPosition = weaponList.Count - 1;
         }
-        if (currentWeaponListPosition > weaponList.Count -1)
+        if (currentWeaponListPosition > weaponList.Count - 1)
         {
             currentWeaponListPosition = 0;
         }

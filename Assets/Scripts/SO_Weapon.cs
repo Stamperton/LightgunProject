@@ -10,6 +10,7 @@ public class SO_Weapon : ScriptableObject
     public int weapon_CurrentAmmo;
     public int weapon_ClipSize;
     public int damagePerBullet;
+    public Vector2 weaponPhysicsForce;
 
     public AudioClip[] weaponAudio_Fire;
     public AudioClip[] weaponAudio_Reload;
