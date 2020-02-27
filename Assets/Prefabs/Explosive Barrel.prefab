@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 810456429908184653}
   - component: {fileID: 2970400792015158645}
   - component: {fileID: 1186494362652037141}
-  - component: {fileID: 5096248476115828893}
+  - component: {fileID: 3818926159575347772}
   m_Layer: 9
   m_Name: Explosive Barrel
   m_TagString: Flame
@@ -95,6 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faef3f8588c41cd48a1cabb87f895fd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 4
+  playOnce: 1
 --- !u!136 &1186494362652037141
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -109,25 +111,23 @@ CapsuleCollider:
   m_Height: 0.6657166
   m_Direction: 1
   m_Center: {x: 0.00000010430813, y: 0.3328583, z: 0.000000052154064}
---- !u!95 &5096248476115828893
-Animator:
-  serializedVersion: 3
+--- !u!111 &3818926159575347772
+Animation:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 824024961050459329}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 0e47a319ade08a04eb002ad91fa42b6c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: f096c901af90fb746845c438dad6ba0f, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: f096c901af90fb746845c438dad6ba0f, type: 2}
+  - {fileID: 7400000, guid: e01eedd793e023e41a75438cf76d978f, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &3237072672965715704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,18 +304,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 827597375662883641}
     m_Modifications:
-    - target: {fileID: 1804206099813350, guid: 4dd02b5f854b6c84990fbeb810abffe4, type: 3}
-      propertyPath: m_Name
-      value: Explosion_Small_FX
-      objectReference: {fileID: 0}
-    - target: {fileID: 1804206099813350, guid: 4dd02b5f854b6c84990fbeb810abffe4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1804206099813350, guid: 4dd02b5f854b6c84990fbeb810abffe4, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 4934833856949886, guid: 4dd02b5f854b6c84990fbeb810abffe4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -359,6 +347,18 @@ PrefabInstance:
     - target: {fileID: 4934833856949886, guid: 4dd02b5f854b6c84990fbeb810abffe4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804206099813350, guid: 4dd02b5f854b6c84990fbeb810abffe4, type: 3}
+      propertyPath: m_Name
+      value: Explosion_Small_FX
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804206099813350, guid: 4dd02b5f854b6c84990fbeb810abffe4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804206099813350, guid: 4dd02b5f854b6c84990fbeb810abffe4, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 199960877399999766, guid: 4dd02b5f854b6c84990fbeb810abffe4,
         type: 3}
