@@ -102,6 +102,8 @@ public class OnRailsGameManager : MonoBehaviour
                 rotX = 0;
                 rotY = 0;
                 startPosition = player.transform;
+
+                playerAnimator.SetBool("PlayerWalking", true);
             }
 
             moveY = playerAnimationCurve.Evaluate(moveX);
@@ -113,6 +115,8 @@ public class OnRailsGameManager : MonoBehaviour
                 moveX = 1;
                 moveToWaypoint = false;
                 lookToWaypointDirection = true;
+
+                playerAnimator.SetBool("PlayerWalking", false);
             }
 
         }

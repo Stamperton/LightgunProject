@@ -22,11 +22,13 @@ public class PlayerUIManager : MonoBehaviour
     Animator anim;
     PlayerShooting player;
 
+    //Screen Damage done through Animations
+
     //UI Variables
     //ADD WEAPON ICON public Sprite currentWeaponIcon;
     public Text playerClipText; //BULLETS LEFT
 
-    //ADD HEALTH
+    //ADD HEALTH ICONS
 
     private void Start()
     {
