@@ -15,7 +15,7 @@ public class LookAt : MonoBehaviour
         startPosition = this.transform;
         if (true)
         {
-            target = GameObject.FindGameObjectWithTag("Player").transform;
+            target = Camera.main.transform;
         }
     }
 

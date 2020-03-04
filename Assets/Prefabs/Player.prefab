@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 520975684}
   - component: {fileID: 520975686}
   - component: {fileID: 520975685}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: Flashlight
   m_TagString: Flashlight
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b05065ac5bd01da4e86e7dd93b9ec743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 3887735376308549638, guid: b2dcb0b6befa3c245bac1df8ff6ef310, type: 3}
+  cam: {fileID: 0}
 --- !u!108 &520975685
 Light:
   m_ObjectHideFlags: 0
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 1298904354}
   - component: {fileID: 1298904353}
   - component: {fileID: 1298904352}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: AmmoRemainingText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1875784008}
   - component: {fileID: 1875784009}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -231,7 +231,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -266,7 +266,8 @@ GameObject:
   - component: {fileID: 1041822050}
   - component: {fileID: 110384598823037095}
   - component: {fileID: 1041822053}
-  m_Layer: 2
+  - component: {fileID: 1041822046}
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -333,8 +334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashlightGO: {fileID: 520975683}
   hitParticles: {fileID: 100006, guid: 0438351a6e6422d43a09930e9be00ee9, type: 3}
-  flamethrowerParticles: {fileID: 4290000933105672434, guid: 86be83e8e4b799c478c404ff96da5c64,
-    type: 3}
+  grenadePrefab: {fileID: 0}
   defaultWeapon: {fileID: 11400000, guid: 021e406a7c0324447bd80ffe835224eb, type: 2}
   currentWeapon: {fileID: 0}
   currentWeaponListPosition: 0
@@ -459,6 +459,25 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &1041822046
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3887735376308549633}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: da0f7056ebb1f9b4c81a67d22dc2d249, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5283075077564271924
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,7 +489,7 @@ GameObject:
   - component: {fileID: 8141848206665448367}
   - component: {fileID: 4496197558220849294}
   - component: {fileID: 7234359490458138624}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: BlackoutImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -546,7 +565,7 @@ GameObject:
   - component: {fileID: 8531708960429214510}
   - component: {fileID: 3522664561266478340}
   - component: {fileID: 777571289387169212}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: UI Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

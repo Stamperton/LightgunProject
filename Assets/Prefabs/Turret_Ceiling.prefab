@@ -677,7 +677,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7468766475922668251}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2185, y: 0.2645, z: 0.333}
+  m_LocalPosition: {x: -0.002, y: 0.175, z: 0.333}
   m_LocalScale: {x: 1, y: 1, z: 19.629}
   m_Children: []
   m_Father: {fileID: 7468766475428311495}
@@ -791,7 +791,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1586945245971122, guid: 92e082508748fc449afabd6d223998f6, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4113465285098262, guid: 92e082508748fc449afabd6d223998f6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -869,14 +869,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7468766475428311495}
     m_Modifications:
-    - target: {fileID: 1006503405123290, guid: 2c0c6b8c780ef4c49bad541f8512530d, type: 3}
-      propertyPath: m_Name
-      value: FX_Laser_Bullet
-      objectReference: {fileID: 0}
-    - target: {fileID: 1006503405123290, guid: 2c0c6b8c780ef4c49bad541f8512530d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4027941581798566, guid: 2c0c6b8c780ef4c49bad541f8512530d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -919,6 +911,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4027941581798566, guid: 2c0c6b8c780ef4c49bad541f8512530d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006503405123290, guid: 2c0c6b8c780ef4c49bad541f8512530d, type: 3}
+      propertyPath: m_Name
+      value: FX_Laser_Bullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006503405123290, guid: 2c0c6b8c780ef4c49bad541f8512530d, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198933866736967478, guid: 2c0c6b8c780ef4c49bad541f8512530d,

@@ -12,10 +12,10 @@ public class PlayerShooting : MonoBehaviour
 
     public GameObject flashlightGO;
     public GameObject hitParticles;
-    public GameObject flamethrowerParticles;
 
     [Header("Weapon Variables")]
     RaycastHit _hit;
+    public GameObject grenadePrefab;
     public SO_Weapon defaultWeapon;
     public SO_Weapon currentWeapon;
     List<SO_Weapon> weaponList = new List<SO_Weapon>();
@@ -138,17 +138,25 @@ public class PlayerShooting : MonoBehaviour
             //debug for testing
             Debug.DrawRay(cam.ScreenPointToRay(Input.mousePosition).origin, cam.ScreenPointToRay(Input.mousePosition).direction, Color.red);
 
-            //Actually Shoot
-            if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out _hit, 100))
+            if (currentWeapon.weaponType == PlayerWeaponType.GrenadeLauncher)
             {
-                WeaponParticles(currentWeapon.weaponType);
+                GameObject _grenade = Instantiate(grenadePrefab, cam.transform.position, cam.transform.rotation);
+                _grenade.GetComponent<Rigidbody>().AddForce(cam.ScreenPointToRay(Input.mousePosition).direction * 20f, ForceMode.Impulse);
+            }
+            else //Raycast Shooting
+            {
+                                //Actually Shoot
+                if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out _hit, 100))
+                {
+                    WeaponParticles(currentWeapon.weaponType);
 
-                //Shootable Target?
-                IShootable _targetShootable = _hit.collider.GetComponentInParent<IShootable>();
+                    //Shootable Target?
+                    IShootable _targetShootable = _hit.collider.GetComponentInParent<IShootable>();
 
-                _targetShootable?.OnGetHit(_hit, currentWeapon.damagePerBullet);
+                    _targetShootable?.OnGetHit(_hit, currentWeapon.damagePerBullet);
 
 
+                }
             }
         }
         else
@@ -160,15 +168,9 @@ public class PlayerShooting : MonoBehaviour
     void WeaponParticles(PlayerWeaponType weaponType)
     {
         GameObject _particles;
-        if (weaponType != PlayerWeaponType.Flamethower)
-        {
-            _particles = Instantiate(hitParticles, _hit.point, Quaternion.identity);
-        }
-        else
-        {
-            _particles = Instantiate(flamethrowerParticles, cam.transform.position, Quaternion.LookRotation(_hit.transform.position));
-            //_particles.transform.LookAt(_hit.transform);
-        }
+
+        _particles = Instantiate(hitParticles, _hit.point, Quaternion.identity);
+
         Destroy(_particles, 1f);
     }
 

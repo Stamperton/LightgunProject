@@ -79,7 +79,8 @@ public class Enemy : MonoBehaviour, IShootable
         enemyState = EnemyState.Dead;
         AIHandler(enemyState);
 
-        waypointSpawnedAt.enemiesAtThisWaypoint?.Remove(this); //Remove from the Waypoint, if applicable
+        if (waypointSpawnedAt != null)
+            waypointSpawnedAt.enemiesAtThisWaypoint.Remove(this); //Remove from the Waypoint, if applicable
     }
 
     public void ExplosionHit(int damage)
