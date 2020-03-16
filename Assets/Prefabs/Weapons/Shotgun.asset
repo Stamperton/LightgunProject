@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4a4a89ddeb19164cbe746a3af82b25b, type: 3}
-  m_Name: Pistol
+  m_Name: Shotgun
   m_EditorClassIdentifier: 
-  weaponType: 0
-  weaponName: Pistol
+  weaponType: 2
+  weaponName: Shotgun
   weaponFireParticles: {fileID: 6749073090036212147, guid: 5e51fac7cc7b4d547b37a498e57e987b,
     type: 3}
-  weapon_CurrentAmmo: 15
-  weapon_ClipSize: 15
+  weapon_CurrentAmmo: 1
+  weapon_ClipSize: 7
   damagePerBullet: 1
   weaponAudio_Fire:
   - {fileID: 8300000, guid: caaa99e9b372c954abba751666310c76, type: 3}
@@ -51,4 +51,4 @@ MonoBehaviour:
   isReloadable: 1
   isAutomatic: 0
   weaponAudio_BulletTail: {fileID: 0}
-  timeBetweenShots: 0
+  timeBetweenShots: 1

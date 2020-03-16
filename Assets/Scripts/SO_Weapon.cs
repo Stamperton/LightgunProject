@@ -7,6 +7,7 @@ public class SO_Weapon : ScriptableObject
 {
     public PlayerWeaponType weaponType;
     public string weaponName;
+    public GameObject weaponFireParticles;
     public int weapon_CurrentAmmo;
     public int weapon_ClipSize;
     public int damagePerBullet;

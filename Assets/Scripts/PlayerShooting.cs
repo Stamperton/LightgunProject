@@ -143,12 +143,25 @@ public class PlayerShooting : MonoBehaviour
                 GameObject _grenade = Instantiate(grenadePrefab, cam.transform.position, cam.transform.rotation);
                 _grenade.GetComponent<Rigidbody>().AddForce(cam.ScreenPointToRay(Input.mousePosition).direction * 20f, ForceMode.Impulse);
             }
+
             else //Raycast Shooting
             {
-                                //Actually Shoot
+                //Actually Shoot
                 if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out _hit, 100))
                 {
-                    WeaponParticles(currentWeapon.weaponType);
+                    Debug.DrawLine(cam.transform.position, _hit.point, Color.yellow, 1f);
+
+                    if (currentWeapon.weaponType == PlayerWeaponType.Shotgun)
+                    {
+                        int shotCount = Random.Range(8, 12);
+                        for (int i = 0; i < shotCount; i++)
+                        {
+                            ShotgunRay();
+                        }
+                        return;
+                    }
+                    WeaponImpactParticles(currentWeapon.weaponType, _hit.point);
+                    WeaponFireParticles(currentWeapon.weaponFireParticles, _hit.point);
 
                     //Shootable Target?
                     IShootable _targetShootable = _hit.collider.GetComponentInParent<IShootable>();
@@ -165,13 +178,52 @@ public class PlayerShooting : MonoBehaviour
         }
     }
 
-    void WeaponParticles(PlayerWeaponType weaponType)
+    void ShotgunRay()
     {
+        Vector3 direction = _hit.point; // your initial aim.
+        Vector3 spread = Vector3.zero;
+        spread += cam.transform.up * Random.Range(-1f, 1f); // add random up or down (because random can get negative too)
+        spread += cam.transform.right * Random.Range(-1f, 1f); // add random left or right
+
+        // Using random up and right values will lead to a square spray pattern. If we normalize this vector, we'll get the spread direction, but as a circle.
+        // Since the radius is always 1 then (after normalization), we need another random call. 
+        direction += spread.normalized * Random.Range(0, 2);
+
+        RaycastHit shotgunHit;
+
+        if (Physics.Raycast(cam.transform.position, direction, out shotgunHit, 100))
+        {
+            {
+                Debug.DrawLine(cam.transform.position, shotgunHit.point, Color.green, 1f);
+
+                WeaponFireParticles(currentWeapon.weaponFireParticles, shotgunHit.point);
+
+                IShootable _targetShootable = _hit.collider.GetComponentInParent<IShootable>();
+
+                _targetShootable?.OnGetHit(_hit, currentWeapon.damagePerBullet);
+
+                WeaponImpactParticles(currentWeapon.weaponType, shotgunHit.point);
+            }
+        }
+
+    }
+    void WeaponImpactParticles(PlayerWeaponType weaponType, Vector3 particleLocation)
+    {
+        //TODO : PARTICLE POOL
+
         GameObject _particles;
 
-        _particles = Instantiate(hitParticles, _hit.point, Quaternion.identity);
+        _particles = Instantiate(hitParticles, particleLocation, Quaternion.identity);
 
         Destroy(_particles, 1f);
+    }
+
+    void WeaponFireParticles(GameObject _bulletParticle, Vector3 destination)
+    {
+        if (_bulletParticle == null)
+            return;
+
+        //TODO : WEAPON BULLET POOLING
     }
 
     void CycleWeapons(int cycle)
