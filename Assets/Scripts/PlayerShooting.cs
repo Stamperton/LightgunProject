@@ -180,7 +180,7 @@ public class PlayerShooting : MonoBehaviour
 
     void ShotgunRay()
     {
-        Vector3 direction = _hit.point; // your initial aim.
+        Vector3 direction = _hit.point - transform.position; // your initial aim.
         Vector3 spread = Vector3.zero;
         spread += cam.transform.up * Random.Range(-1f, 1f); // add random up or down (because random can get negative too)
         spread += cam.transform.right * Random.Range(-1f, 1f); // add random left or right
@@ -196,12 +196,11 @@ public class PlayerShooting : MonoBehaviour
             {
                 Debug.DrawLine(cam.transform.position, shotgunHit.point, Color.green, 1f);
 
+
+                IShootable _targetShootable = shotgunHit.collider.GetComponentInParent<IShootable>();
+                _targetShootable?.OnGetHit(shotgunHit, currentWeapon.damagePerBullet);
+
                 WeaponFireParticles(currentWeapon.weaponFireParticles, shotgunHit.point);
-
-                IShootable _targetShootable = _hit.collider.GetComponentInParent<IShootable>();
-
-                _targetShootable?.OnGetHit(_hit, currentWeapon.damagePerBullet);
-
                 WeaponImpactParticles(currentWeapon.weaponType, shotgunHit.point);
             }
         }

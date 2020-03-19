@@ -133,6 +133,14 @@ public class Enemy : MonoBehaviour, IShootable
         }
     }
 
+
+    public IEnumerator AnimationToggle(string animation)
+    {
+        Debug.Log("Coroutine Running");
+        yield return new WaitForSeconds(.5f);
+        anim.SetBool(animation, false);
+    }
+
     protected virtual void DamageAnimationHandler(HitLocation _hitLocation)
     {
         switch (_hitLocation)
@@ -140,17 +148,22 @@ public class Enemy : MonoBehaviour, IShootable
             case HitLocation.Null:
                 break;
             case HitLocation.Head:
-                anim.SetTrigger("HeadDamage");
+                anim.SetBool("HeadDamage", true);
+                StartCoroutine(AnimationToggle("HeadDamage"));
                 break;
             case HitLocation.Torso:
                 break;
             case HitLocation.LeftArm:
                 break;
             case HitLocation.LeftLeg:
+                anim.SetBool("LeftLegDamage", true);
+                StartCoroutine(AnimationToggle("LeftLegDamage"));
                 break;
             case HitLocation.RightArm:
                 break;
             case HitLocation.RightLeg:
+                anim.SetBool("RightLegDamage", true);
+                StartCoroutine(AnimationToggle("RightLegDamage"));
                 break;
             case HitLocation.Weapon:
                 break;
