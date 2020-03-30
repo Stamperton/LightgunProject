@@ -27,13 +27,15 @@ public class PlayerUIManager : MonoBehaviour
     //UI Variables
     //ADD WEAPON ICON public Sprite currentWeaponIcon;
     public Text playerClipText; //BULLETS LEFT
+    public Text weaponNameText;
 
     //ADD HEALTH ICONS
 
     private void Start()
     {
         anim = GetComponent<Animator>();
-        player = GetComponentInParent<PlayerShooting>();
+        player = PlayerShooting.instance;
+        UpdateUI();
     }
 
     public void FadeToBlack()
@@ -45,5 +47,6 @@ public class PlayerUIManager : MonoBehaviour
     {
         //currentWeaponIcon.sprite = player.currentWeapon.weaponIcon;
         playerClipText.text = player.currentWeapon.weapon_CurrentAmmo.ToString();
+        weaponNameText.text = player.currentWeapon.weaponName.ToString();
     }
 }

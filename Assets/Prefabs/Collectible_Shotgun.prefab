@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 430da39713fcbcc458a3f88a1e000df4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponToCollect: {fileID: 11400000, guid: 9fcf7abe48b985c4ba38181e7dfd2937, type: 2}
+  weaponToCollect: {fileID: 11400000, guid: 3db9c44f07a482b4ea0ef12f62492580, type: 2}
   collectionNoise: {fileID: 8300000, guid: f806847cda0eb2547a6084078aafcfa2, type: 3}
 --- !u!114 &3769376912931757411
 MonoBehaviour:

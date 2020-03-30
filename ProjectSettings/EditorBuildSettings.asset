@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/ShootingGallery.unity
-    guid: e8c901115eb8b1c4d8cbc711242ed77b
+    path: Assets/Scenes/RailShooterScene.unity
+    guid: 1093e29fd097ef241a6f3c693a56f6f7
   m_configObjects: {}

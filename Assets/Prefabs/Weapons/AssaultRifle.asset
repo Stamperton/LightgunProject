@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponType: 1
   weaponName: MachineGun
-  weapon_CurrentAmmo: 30
-  weapon_ClipSize: 30
+  weaponFireParticles: {fileID: 0}
+  weapon_CurrentAmmo: 50
+  weapon_ClipSize: 300
   damagePerBullet: 1
   weaponAudio_Fire:
   - {fileID: 8300000, guid: 898c1eee2e5505647a64d6dcc9f9133d, type: 3}

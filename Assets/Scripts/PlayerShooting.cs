@@ -5,6 +5,17 @@ using UnityEngine.UI;
 
 public class PlayerShooting : MonoBehaviour
 {
+    public static PlayerShooting instance;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+            Destroy(gameObject);
+    }
+
     //Components
     AudioSource gunAudio;
     Camera cam;
@@ -40,7 +51,7 @@ public class PlayerShooting : MonoBehaviour
         weaponList.Add(defaultWeapon);
         currentWeapon = defaultWeapon;
         currentWeapon.weapon_CurrentAmmo = currentWeapon.weapon_ClipSize;
-        UIManager.UpdateUI();
+
     }
 
     // Update is called once per frame

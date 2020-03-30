@@ -18,7 +18,7 @@ MonoBehaviour:
     type: 3}
   weapon_CurrentAmmo: 6
   weapon_ClipSize: 7
-  damagePerBullet: 1
+  damagePerBullet: 4
   weaponAudio_Fire:
   - {fileID: 8300000, guid: 211abb7bcfac05748969273522ac5ade, type: 3}
   - {fileID: 8300000, guid: 79e948fe84a2d4b409cd613bb576e9f5, type: 3}
