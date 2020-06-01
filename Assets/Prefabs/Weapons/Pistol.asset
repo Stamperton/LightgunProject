@@ -16,7 +16,7 @@ MonoBehaviour:
   weaponName: Pistol
   weaponFireParticles: {fileID: 6749073090036212147, guid: 5e51fac7cc7b4d547b37a498e57e987b,
     type: 3}
-  weapon_CurrentAmmo: 15
+  weapon_CurrentAmmo: 13
   weapon_ClipSize: 15
   damagePerBullet: 1
   weaponAudio_Fire:
@@ -51,4 +51,4 @@ MonoBehaviour:
   isReloadable: 1
   isAutomatic: 0
   weaponAudio_BulletTail: {fileID: 0}
-  timeBetweenShots: 0
+  timeBetweenShots: 0.2

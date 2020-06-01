@@ -16,6 +16,11 @@ public class MenuTarget : MonoBehaviour, IShootable
         otherMenuTarget.GetComponent<Animator>().SetBool("Ready", false);
     }
 
+    public void OnGetHit(int weaponDamage)
+    {
+
+    }
+
     private void Start()
     {
         Reset();

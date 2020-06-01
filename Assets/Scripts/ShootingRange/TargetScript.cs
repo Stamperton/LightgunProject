@@ -58,6 +58,11 @@ public class TargetScript : MonoBehaviour, IShootable
         ResetTimer();
     }
 
+    public void OnGetHit(int weaponDamage)
+    {
+        return;
+    }
+
     public void SetTargetActive()
     {
         Debug.Log(name + " set active");

@@ -16,7 +16,7 @@ public class ExplosionForceAndDamage : MonoBehaviour
         {
             Enemy _enemy = nearbyObject.GetComponentInParent<Enemy>();      
 
-            _enemy?.ExplosionHit(explosionDamage);
+            _enemy?.OnGetHit(explosionDamage);
 
             if (explosionForce.x != 0 && explosionForce.y != 0)
             {

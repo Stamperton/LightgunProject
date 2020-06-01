@@ -22,4 +22,20 @@ public class Collectable : MonoBehaviour, IShootable
 
         this.gameObject.SetActive(false);
     }
+
+    public void OnGetHit(int weaponDamage)
+    {
+        if (weaponToCollect != null)
+        {
+            OnRailsGameManager.instance.player.GetComponent<PlayerShooting>().AddToWeaponList(weaponToCollect);
+        }
+        else
+        {
+            OnRailsGameManager.instance.playerHealth++;
+        }
+
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<AudioSource>().PlayOneShot(collectionNoise);
+
+        this.gameObject.SetActive(false);
+    }
 }

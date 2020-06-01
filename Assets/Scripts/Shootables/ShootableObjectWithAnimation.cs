@@ -19,6 +19,16 @@ public class ShootableObjectWithAnimation : MonoBehaviour, IShootable
         }
     }
 
+    public void OnGetHit(int weaponDamage)
+    {
+        health -= weaponDamage;
+
+        if (health <= 0)
+        {
+            Animate();
+        }
+    }
+
     void Animate()
     {
         if (playOnce == true && hasPlayed)

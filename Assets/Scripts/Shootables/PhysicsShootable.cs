@@ -17,4 +17,10 @@ public class PhysicsShootable : MonoBehaviour, IShootable
         rBody.isKinematic = false;
         rBody.AddForceAtPosition((transform.position - _hit.point) * Random.Range(hitForce.x, hitForce.y), _hit.point, ForceMode.Impulse);
     }
+
+    public void OnGetHit(int weaponDamage)
+    {
+        rBody.isKinematic = false;
+        rBody.AddForce(transform.position * Random.Range(hitForce.x, hitForce.y));
+    }
 }

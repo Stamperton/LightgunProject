@@ -25,7 +25,7 @@ public class PlayerUIManager : MonoBehaviour
     //Screen Damage done through Animations
 
     //UI Variables
-    //ADD WEAPON ICON public Sprite currentWeaponIcon;
+    public Image currentWeaponIcon;
     public Text playerClipText; //BULLETS LEFT
     public Text weaponNameText;
 
@@ -35,7 +35,6 @@ public class PlayerUIManager : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         player = PlayerShooting.instance;
-        UpdateUI();
     }
 
     public void FadeToBlack()
@@ -45,7 +44,7 @@ public class PlayerUIManager : MonoBehaviour
 
     public void UpdateUI()
     {
-        //currentWeaponIcon.sprite = player.currentWeapon.weaponIcon;
+        currentWeaponIcon.sprite = player.currentWeapon.weaponIcon;
         playerClipText.text = player.currentWeapon.weapon_CurrentAmmo.ToString();
         weaponNameText.text = player.currentWeapon.weaponName.ToString();
     }

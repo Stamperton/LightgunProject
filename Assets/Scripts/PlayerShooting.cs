@@ -52,16 +52,17 @@ public class PlayerShooting : MonoBehaviour
         currentWeapon = defaultWeapon;
         currentWeapon.weapon_CurrentAmmo = currentWeapon.weapon_ClipSize;
 
+        PlayerUIManager.instance.UpdateUI();
     }
 
     // Update is called once per frame
     private void Update()
     {
-        //shotDelayTimer += Time.deltaTime;
-
         //Handle Weapon Shooting
-        if (Input.GetMouseButtonDown(0) && !isReloading)
+        if (Input.GetMouseButtonDown(0) && !isReloading && CanShoot())
         {
+            shotDelayTimer = Time.time;
+
             if (!currentWeapon.isAutomatic)
             {
                 Shoot();
@@ -74,7 +75,7 @@ public class PlayerShooting : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             CancelInvoke("Shoot");
-            if (currentWeapon.weapon_CurrentAmmo != 0)
+            if (currentWeapon.weapon_CurrentAmmo != 0 && currentWeapon.isAutomatic)
                 gunAudio.PlayOneShot(currentWeapon.weaponAudio_BulletTail); //Machinegun Bullet Tail (Echo Effect)
         }
 
@@ -99,6 +100,15 @@ public class PlayerShooting : MonoBehaviour
             flashlightGO.SetActive(!flashlightGO.activeSelf);
         }
 
+    }
+
+    bool CanShoot()
+    {
+        float gunTimer = shotDelayTimer + currentWeapon.timeBetweenShots;
+        if (Time.time > gunTimer)
+            return true;
+        else
+            return false;
     }
 
     IEnumerator Reload()

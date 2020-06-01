@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour, IShootable
     [Header("Enemy Variables")]
     public int enemyHealth;
 
+    Transform playerTransform;
 
     public void Start()
     {
@@ -40,14 +41,21 @@ public class Enemy : MonoBehaviour, IShootable
             _shootableAreas.Add(_area.collider, _area.hitLocation);
         }
 
+        playerTransform = Camera.main.transform;
         //Reset Variables
 
+    }
+
+    private void Update()
+    {
+ 
     }
 
     public virtual void Spawn()
     {
         enemyState = spawnState;
         AIHandler(enemyState);
+        playerTransform = Camera.main.transform;
     }
 
     public virtual void EnterMeleeAttackRange()
@@ -68,14 +76,10 @@ public class Enemy : MonoBehaviour, IShootable
         AIHandler(enemyState);
     }
 
-    public void EnterFire()
-    {
-        enemyHealth--;
-        DamageAnimationHandler(HitLocation.Head);
-    }
-
     public virtual void Death()
     {
+        if (enemyState == EnemyState.Dead)
+            return;
         enemyState = EnemyState.Dead;
         AIHandler(enemyState);
 
@@ -83,9 +87,12 @@ public class Enemy : MonoBehaviour, IShootable
             waypointSpawnedAt.enemiesAtThisWaypoint.Remove(this); //Remove from the Waypoint, if applicable
     }
 
-    public void ExplosionHit(int damage)
+    public void OnGetHit(int weaponDamage)
     {
-        enemyHealth -= damage;
+        if (enemyState == EnemyState.Dead)
+            return;
+
+        enemyHealth -= weaponDamage;
 
         if (hasWeakPoint)
             lastLocationHit = HitLocation.WeakPoint;
@@ -134,11 +141,17 @@ public class Enemy : MonoBehaviour, IShootable
     }
 
 
+
     public IEnumerator AnimationToggle(string animation)
     {
         Debug.Log("Coroutine Running");
         yield return new WaitForSeconds(.5f);
         anim.SetBool(animation, false);
+
+        Vector3 lookVector = playerTransform.transform.position - transform.position;
+        lookVector.y = transform.position.y;
+        Quaternion rot = Quaternion.LookRotation(lookVector);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rot, 1);
     }
 
     protected virtual void DamageAnimationHandler(HitLocation _hitLocation)

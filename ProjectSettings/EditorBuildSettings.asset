@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/TitleScreen.unity
+    guid: 239e5809cdcb3db4db61ad136a9c7749
+  - enabled: 1
     path: Assets/Scenes/RailShooterScene.unity
     guid: 1093e29fd097ef241a6f3c693a56f6f7
   m_configObjects: {}

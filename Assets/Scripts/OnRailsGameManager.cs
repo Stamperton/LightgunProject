@@ -62,7 +62,7 @@ public class OnRailsGameManager : MonoBehaviour
 
     //COOME BACK TO THIS STUFF
 
-    public void Update()
+    public void FixedUpdate()
     {
         if (currentWaypoint.enemiesAtThisWaypoint.Count == 0 && currentWaypoint.nextWaypoint != null) //Move only if there are no enemies, or you actually have somewhere to move. Idiot.
         {
